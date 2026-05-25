@@ -104,9 +104,7 @@ npm install --legacy-peer-deps
 
 ---
 
-## Screenshots to add
-
-Take these screenshots on your iPhone and add them to `docs/screenshots/`:
+## Screenshots
 
 | Filename                                                                                        | What to capture |
 | ----------------------------------------------------------------------------------------------- | --------------- |
