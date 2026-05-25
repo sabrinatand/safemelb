@@ -106,12 +106,9 @@ npm install --legacy-peer-deps
 
 ## Screenshots
 
-| Filename                                                                                        | What to capture |
-| ----------------------------------------------------------------------------------------------- | --------------- |
-| ![Home screen showing the map, SOS button, and recent alerts list](screenshots/phase2-home.png) |
-
-|![Report screen with an incident type selected and location auto-filled](screenshots/phase2-report.png)|
-|![Tips screen showing the filter tabs and tip cards](screenshots/phase2-tips.png)|
+| Home / Map                                           | Report Incident                                        | Safety Tips                                          |
+| ---------------------------------------------------- | ------------------------------------------------------ | ---------------------------------------------------- |
+| <img src="screenshots/phase2-home.png" width="200"/> | <img src="screenshots/phase2-report.png" width="200"/> | <img src="screenshots/phase2-tips.png" width="200"/> |
 
 ---
 
