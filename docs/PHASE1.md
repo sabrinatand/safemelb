@@ -94,9 +94,9 @@ mv ../temp_backup/* .
 
 ## Screenshots
 
-_(Add screenshots of your terminal running `expo start` and the app open on your phone)_
-![expo start](screenshots/npx-start.png)
-![app open on the phone](screenshots/app-start.png)
+| Terminal — `npx expo start`                        | App running on iPhone                              |
+| -------------------------------------------------- | -------------------------------------------------- |
+| <img src="screenshots/npx-start.png" width="400"/> | <img src="screenshots/app-start.png" width="200"/> |
 
 ---
 
