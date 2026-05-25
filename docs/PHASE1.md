@@ -26,41 +26,77 @@ Phase 1 covers the full project setup — from development environment to the sc
 ## Technical decisions
 
 ### Supabase over Firebase
+
 Supabase was chosen over Firebase for three reasons: it's built on PostgreSQL (more portable and familiar), the free tier is significantly more generous, and Row Level Security gives fine-grained access control without a separate rules language.
 
 ### Expo Router over React Navigation
+
 Expo Router uses file-based routing — the same mental model as Next.js. This makes the project structure more intuitive and reduces boilerplate compared to manually defining a navigation stack in React Navigation.
 
 ### TypeScript from day one
+
 Starting with TypeScript avoids the painful migration later. It also makes the codebase look more professional in a portfolio context, and catches common bugs (null checks, wrong prop types) at compile time rather than runtime.
 
 ---
 
 ## Challenges
 
-*(Fill this in as you go — document any setup issues you hit and how you solved them.)*
+### 1. npm ERESOLVE peer dependency errors
 
-Example entries:
-- "Expo Go wouldn't connect on the office WiFi — solved by switching to mobile hotspot"
-- "Supabase RLS blocked all reads initially — fixed by adding a public SELECT policy"
+**Problem:** Installing ESLint, Supabase, and other packages kept failing with `ERESOLVE could not resolve` errors. This was caused by React 19 being installed while many packages still listed older React versions as their peer dependency.
+
+**Fix:** Set `legacy-peer-deps` as the project default:
+
+```bash
+npm config set legacy-peer-deps true
+```
+
+---
+
+### 2. Expo SDK version mismatch with Expo Go on iPhone
+
+**Problem:** The project was scaffolded with SDK 56 but Expo Go on the iPhone only supported SDK 54, causing a version mismatch error on every launch.
+
+**Fix:** Upgraded the project to SDK 54 to match the phone:
+
+```bash
+npx expo install expo@~54.0.0 --fix -- --legacy-peer-deps
+```
+
+---
+
+### 3. Expo scaffold blocked by existing files
+
+**Problem:** Running `npx create-expo-app@latest .` failed because existing project files would be overwritten and the CLI refused to proceed.
+
+**Fix:** Temporarily moved existing files to a backup folder, ran the scaffold, then restored them:
+
+```bash
+mkdir ../temp_backup
+mv README.md docs .env.example .prettierrc .claude .expo ../temp_backup/
+npx create-expo-app@latest . --template blank-typescript
+mv ../temp_backup/* .
+```
 
 ---
 
 ## Commits this phase
 
-| Commit | Message |
-|---|---|
-| Initial | `docs: initial README` |
-| Setup | `feat: initialise Expo project with TypeScript` |
-| Backend | `feat: add Supabase client setup` |
-| Maps | `feat: add Google Maps configuration` |
-| Nav | `feat: complete Phase 1 setup — navigation, Supabase, Maps` |
+| Commit  | Message                                                     |
+| ------- | ----------------------------------------------------------- |
+| Initial | `docs: initial README`                                      |
+| Setup   | `feat: initialise Expo project with TypeScript`             |
+| Backend | `feat: add Supabase client setup`                           |
+| Maps    | `feat: add Google Maps configuration`                       |
+| Nav     | `feat: complete Phase 1 setup — navigation, Supabase, Maps` |
 
 ---
 
 ## Screenshots
 
-*(Add screenshots of your terminal running `expo start` and the app open on your phone)*
+_(Add screenshots of your terminal running `expo start` and the app open on your phone)_
+![expo start](screenshots/npx-start.png)
+![app open on the phone](screenshots/app-start.png)
 
 ---
 

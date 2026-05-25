@@ -33,28 +33,30 @@ export default function TipsScreen() {
       </View>
 
       {/* Filter tabs */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.tabsContainer}
-      >
-        {CATEGORIES.map((cat) => (
-          <TouchableOpacity
-            key={cat}
-            style={[styles.tab, activeCategory === cat && styles.tabActive]}
-            onPress={() => setActiveCategory(cat)}
-          >
-            <Text
-              style={[
-                styles.tabText,
-                activeCategory === cat && styles.tabTextActive,
-              ]}
+      <View style={styles.tabsWrapper}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.tabsContainer}
+        >
+          {CATEGORIES.map((cat) => (
+            <TouchableOpacity
+              key={cat}
+              style={[styles.tab, activeCategory === cat && styles.tabActive]}
+              onPress={() => setActiveCategory(cat)}
             >
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+              <Text
+                style={[
+                  styles.tabText,
+                  activeCategory === cat && styles.tabTextActive,
+                ]}
+              >
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
 
       {/* Tips list */}
       <ScrollView
@@ -93,12 +95,15 @@ const styles = StyleSheet.create({
   header:         { paddingHorizontal: 18, paddingTop: 12, paddingBottom: 8 },
   title:          { fontSize: 22, fontWeight: '600', color: Colors.textPrimary },
   subtitle:       { fontSize: 12, color: Colors.textSecondary, marginTop: 4 },
-  tabsContainer:  { 
-    paddingHorizontal: 18, 
-    paddingVertical: 10, 
+  tabsWrapper:    {
+    height: 52,
+  },
+  tabsContainer:  {
+    paddingHorizontal: 18,
+    paddingVertical: 10,
     gap: 6,
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
   tab:            { 
     paddingVertical: 6, 
