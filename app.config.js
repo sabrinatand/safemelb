@@ -2,6 +2,7 @@ export default {
   expo: {
     name: 'safemelb',
     slug: 'safemelb',
+    scheme: 'safemelb',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
